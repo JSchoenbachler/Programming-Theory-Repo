@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] GameObject mainCamera;
     // 1, 2, 3, and 4 for North, East, South, and West, respectively.
     private int cameraDir;
+    // ENCAPSULATION
     public bool isOnGround { get; private set; }
     private Vector3 cameraOffset;
     private Vector2 cameraInput;
@@ -83,14 +84,17 @@ public class PlayerScript : MonoBehaviour
                 break;
         }
     }
+    // ABSTRACTION
     public Vector3 GetCameraForward() {
         return mainCamera.transform.forward;
     }
+    // ABSTRACTION
     public void Jump(float multiplier) {
         Move(Vector3.up * jumpForce * multiplier, ForceMode.Impulse);
         isOnGround = false;
         timeInAir = 0;
     }
+    // ABSTRACTION
     public void Move(Vector3 direction, ForceMode fm) {
         playerRb.AddForce(direction, fm);
     }
